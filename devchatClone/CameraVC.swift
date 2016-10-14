@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CameraVC: AVCamCameraViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
