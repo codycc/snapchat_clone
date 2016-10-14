@@ -3,3 +3,5 @@
 //
 
 #import "AVCamCameraViewController.h"
+#import "AVCamPreviewView.h"
+#import <AVFoundation/AVFoundation.h>

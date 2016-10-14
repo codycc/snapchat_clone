@@ -13,6 +13,7 @@
 #import "AVCamPreviewView.h"
 #import "AVCamPhotoCaptureDelegate.h"
 
+
 static void * SessionRunningContext = &SessionRunningContext;
 
 typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
@@ -57,7 +58,7 @@ typedef NS_ENUM( NSInteger, AVCamLivePhotoMode ) {
 @interface AVCamCameraViewController () <AVCaptureFileOutputRecordingDelegate>
 
 // Session management.
-@property (nonatomic, weak) IBOutlet AVCamPreviewView *previewView;
+
 @property (nonatomic, weak) IBOutlet UISegmentedControl *captureModeControl;
 
 @property (nonatomic) AVCamSetupResult setupResult;
@@ -113,7 +114,7 @@ typedef NS_ENUM( NSInteger, AVCamLivePhotoMode ) {
 	self.videoDeviceDiscoverySession = [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:deviceTypes mediaType:AVMediaTypeVideo position:AVCaptureDevicePositionUnspecified];
 	
 	// Set up the preview view.
-	self.previewView.session = self.session;
+	self._previewView.session = self.session;
 	
 	// Communicate with the session and other session objects on this queue.
 	self.sessionQueue = dispatch_queue_create( "session queue", DISPATCH_QUEUE_SERIAL );
@@ -250,7 +251,7 @@ typedef NS_ENUM( NSInteger, AVCamLivePhotoMode ) {
 	UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
 	
 	if ( UIDeviceOrientationIsPortrait( deviceOrientation ) || UIDeviceOrientationIsLandscape( deviceOrientation ) ) {
-		self.previewView.videoPreviewLayer.connection.videoOrientation = (AVCaptureVideoOrientation)deviceOrientation;
+		self._previewView.videoPreviewLayer.connection.videoOrientation = (AVCaptureVideoOrientation)deviceOrientation;
 	}
 }
 
@@ -314,7 +315,7 @@ typedef NS_ENUM( NSInteger, AVCamLivePhotoMode ) {
 				initialVideoOrientation = (AVCaptureVideoOrientation)statusBarOrientation;
 			}
 			
-			self.previewView.videoPreviewLayer.connection.videoOrientation = initialVideoOrientation;
+			self._previewView.videoPreviewLayer.connection.videoOrientation = initialVideoOrientation;
 		} );
 	}
 	else {
@@ -545,7 +546,7 @@ typedef NS_ENUM( NSInteger, AVCamLivePhotoMode ) {
 
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer
 {
-	CGPoint devicePoint = [self.previewView.videoPreviewLayer captureDevicePointOfInterestForPoint:[gestureRecognizer locationInView:gestureRecognizer.view]];
+	CGPoint devicePoint = [self._previewView.videoPreviewLayer captureDevicePointOfInterestForPoint:[gestureRecognizer locationInView:gestureRecognizer.view]];
 	[self focusWithMode:AVCaptureFocusModeAutoFocus exposeWithMode:AVCaptureExposureModeAutoExpose atDevicePoint:devicePoint monitorSubjectAreaChange:YES];
 }
 
@@ -587,7 +588,7 @@ typedef NS_ENUM( NSInteger, AVCamLivePhotoMode ) {
 		entering the session queue. We do this to ensure UI elements are accessed on
 		the main thread and session configuration is done on the session queue.
 	*/
-	AVCaptureVideoOrientation videoPreviewLayerVideoOrientation = self.previewView.videoPreviewLayer.connection.videoOrientation;
+	AVCaptureVideoOrientation videoPreviewLayerVideoOrientation = self._previewView.videoPreviewLayer.connection.videoOrientation;
 
 	dispatch_async( self.sessionQueue, ^{
 		
@@ -611,9 +612,9 @@ typedef NS_ENUM( NSInteger, AVCamLivePhotoMode ) {
 		// Use a separate object for the photo capture delegate to isolate each capture life cycle.
 		AVCamPhotoCaptureDelegate *photoCaptureDelegate = [[AVCamPhotoCaptureDelegate alloc] initWithRequestedPhotoSettings:photoSettings willCapturePhotoAnimation:^{
 			dispatch_async( dispatch_get_main_queue(), ^{
-				self.previewView.videoPreviewLayer.opacity = 0.0;
+				self._previewView.videoPreviewLayer.opacity = 0.0;
 				[UIView animateWithDuration:0.25 animations:^{
-					self.previewView.videoPreviewLayer.opacity = 1.0;
+					self._previewView.videoPreviewLayer.opacity = 1.0;
 				}];
 			} );
 		} capturingLivePhoto:^( BOOL capturing ) {
@@ -696,7 +697,7 @@ typedef NS_ENUM( NSInteger, AVCamLivePhotoMode ) {
 		before entering the session queue. We do this to ensure UI elements are
 		accessed on the main thread and session configuration is done on the session queue.
 	*/
-	AVCaptureVideoOrientation videoPreviewLayerVideoOrientation = self.previewView.videoPreviewLayer.connection.videoOrientation;
+	AVCaptureVideoOrientation videoPreviewLayerVideoOrientation = self._previewView.videoPreviewLayer.connection.videoOrientation;
 	
 	dispatch_async( self.sessionQueue, ^{
 		if ( ! self.movieFileOutput.isRecording ) {
