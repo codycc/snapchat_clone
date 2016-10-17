@@ -15,6 +15,8 @@
 		0B1854CA1DB1794E000CE9E3 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1854C71DB1794E000CE9E3 /* AVCamPreviewView.m */; };
 		0B1854CB1DB1794E000CE9E3 /* AVCamCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1854C91DB1794E000CE9E3 /* AVCamCameraViewController.m */; };
 		0B1854CE1DB179A5000CE9E3 /* AVCamPhotoCaptureDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1854CD1DB179A5000CE9E3 /* AVCamPhotoCaptureDelegate.m */; };
+		0B92B4D01DB5635E00454B50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B92B4CF1DB5635E00454B50 /* GoogleService-Info.plist */; };
+		124E44A49FE8F9EACCCBDBB5 /* Pods_devchatClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D4053D0C585E8D0A6AFE38 /* Pods_devchatClone.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,10 @@
 		0B1854CC1DB179A5000CE9E3 /* AVCamPhotoCaptureDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPhotoCaptureDelegate.h; sourceTree = "<group>"; };
 		0B1854CD1DB179A5000CE9E3 /* AVCamPhotoCaptureDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPhotoCaptureDelegate.m; sourceTree = "<group>"; };
 		0B92B4CC1DB5251800454B50 /* CameraVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraVCDelegate.h; sourceTree = "<group>"; };
+		0B92B4CF1DB5635E00454B50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		39D4053D0C585E8D0A6AFE38 /* Pods_devchatClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_devchatClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DF28CECAE11B4A737E7C806 /* Pods-devchatClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devchatClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-devchatClone/Pods-devchatClone.release.xcconfig"; sourceTree = "<group>"; };
+		F437A1A8EDA56CCF6A8C428B /* Pods-devchatClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devchatClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-devchatClone/Pods-devchatClone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				124E44A49FE8F9EACCCBDBB5 /* Pods_devchatClone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +58,8 @@
 			children = (
 				0B1854A91DB178AE000CE9E3 /* devchatClone */,
 				0B1854A81DB178AE000CE9E3 /* Products */,
+				3A06AF2E23B4E3B03DA049E5 /* Pods */,
+				67AE1A4CF7DE69E16231D158 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +74,7 @@
 		0B1854A91DB178AE000CE9E3 /* devchatClone */ = {
 			isa = PBXGroup;
 			children = (
+				0B92B4CF1DB5635E00454B50 /* GoogleService-Info.plist */,
 				0B92B4C91DB5216200454B50 /* Protocols */,
 				0B1854D01DB17C33000CE9E3 /* View */,
 				0B1854CF1DB17C2E000CE9E3 /* Controller */,
@@ -107,6 +117,23 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		3A06AF2E23B4E3B03DA049E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F437A1A8EDA56CCF6A8C428B /* Pods-devchatClone.debug.xcconfig */,
+				8DF28CECAE11B4A737E7C806 /* Pods-devchatClone.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		67AE1A4CF7DE69E16231D158 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				39D4053D0C585E8D0A6AFE38 /* Pods_devchatClone.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,9 +141,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B1854B91DB178AE000CE9E3 /* Build configuration list for PBXNativeTarget "devchatClone" */;
 			buildPhases = (
+				21E5F7DBDAD39B66BCDFE85F /* [CP] Check Pods Manifest.lock */,
 				0B1854A31DB178AE000CE9E3 /* Sources */,
 				0B1854A41DB178AE000CE9E3 /* Frameworks */,
 				0B1854A51DB178AE000CE9E3 /* Resources */,
+				2D7E0254E117BC6368DBAF2C /* [CP] Embed Pods Frameworks */,
+				5DE857E216932A1BAE902D8A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -171,10 +201,59 @@
 				0B1854B51DB178AE000CE9E3 /* LaunchScreen.storyboard in Resources */,
 				0B1854B21DB178AE000CE9E3 /* Assets.xcassets in Resources */,
 				0B1854B01DB178AE000CE9E3 /* Main.storyboard in Resources */,
+				0B92B4D01DB5635E00454B50 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21E5F7DBDAD39B66BCDFE85F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2D7E0254E117BC6368DBAF2C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-devchatClone/Pods-devchatClone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DE857E216932A1BAE902D8A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-devchatClone/Pods-devchatClone-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0B1854A31DB178AE000CE9E3 /* Sources */ = {
@@ -306,6 +385,7 @@
 		};
 		0B1854BA1DB178AE000CE9E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F437A1A8EDA56CCF6A8C428B /* Pods-devchatClone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -322,6 +402,7 @@
 		};
 		0B1854BB1DB178AE000CE9E3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DF28CECAE11B4A737E7C806 /* Pods-devchatClone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
