@@ -7,18 +7,28 @@
 //
 
 import UIKit
+import AVFoundation 
 
 class CameraVC: AVCamCameraViewController {
     @IBOutlet weak var previewView: AVCamPreviewView!
 
     override func viewDidLoad() {
         // grabbing apples code to load before this view 
-        self._previewView = previewView
+        _previewView = previewView
         super.viewDidLoad()
+        captureModeOn()
+        
         
     }
 
+    @IBAction func recordBtnPressed(_ sender: AnyObject) {
+       toggleMovieRecording()
+     // capturePhoto()
+    }
    
+    @IBAction func changeCameraBtnPressed(_ sender: AnyObject) {
+       changeCamera()
+    }
 
 
 }

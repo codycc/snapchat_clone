@@ -392,7 +392,33 @@ typedef NS_ENUM( NSInteger, AVCamLivePhotoMode ) {
 	} );
 }
 
-- (IBAction)toggleCaptureMode:(UISegmentedControl *)captureModeControl
+- (void)captureModeOn
+{
+   	dispatch_async( self.sessionQueue, ^{
+        AVCaptureMovieFileOutput *movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
+        
+        if ( [self.session canAddOutput:movieFileOutput] )
+        {
+            [self.session beginConfiguration];
+            [self.session addOutput:movieFileOutput];
+            self.session.sessionPreset = AVCaptureSessionPresetHigh;
+            AVCaptureConnection *connection = [movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
+            if ( connection.isVideoStabilizationSupported ) {
+                connection.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;
+            }
+            [self.session commitConfiguration];
+            
+            self.movieFileOutput = movieFileOutput;
+            
+            dispatch_async( dispatch_get_main_queue(), ^{
+                self.recordButton.enabled = YES;
+            } );
+        }
+    } );
+
+}
+
+- (void)toggleCaptureMode:(UISegmentedControl *)captureModeControl
 {
 	if ( captureModeControl.selectedSegmentIndex == AVCamCaptureModePhoto ) {
 		self.recordButton.enabled = NO;
@@ -449,7 +475,7 @@ typedef NS_ENUM( NSInteger, AVCamLivePhotoMode ) {
 
 #pragma mark Device Configuration
 
-- (IBAction)changeCamera:(id)sender
+- (void)changeCamera
 {
 	self.cameraButton.enabled = NO;
 	self.recordButton.enabled = NO;
@@ -581,7 +607,7 @@ typedef NS_ENUM( NSInteger, AVCamLivePhotoMode ) {
 
 #pragma mark Capturing Photos
 
-- (IBAction)capturePhoto:(id)sender
+- (void)capturePhoto
 {
 	/*
 		Retrieve the video preview layer's video orientation on the main queue before
@@ -680,7 +706,7 @@ typedef NS_ENUM( NSInteger, AVCamLivePhotoMode ) {
 
 #pragma mark Recording Movies
 
-- (IBAction)toggleMovieRecording:(id)sender
+- (void)toggleMovieRecording
 {
 	/*
 		Disable the Camera button until recording finishes, and disable
