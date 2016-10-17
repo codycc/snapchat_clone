@@ -32,6 +32,7 @@
 		0B1854C91DB1794E000CE9E3 /* AVCamCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamCameraViewController.m; sourceTree = "<group>"; };
 		0B1854CC1DB179A5000CE9E3 /* AVCamPhotoCaptureDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPhotoCaptureDelegate.h; sourceTree = "<group>"; };
 		0B1854CD1DB179A5000CE9E3 /* AVCamPhotoCaptureDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPhotoCaptureDelegate.m; sourceTree = "<group>"; };
+		0B92B4CC1DB5251800454B50 /* CameraVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraVCDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +65,7 @@
 		0B1854A91DB178AE000CE9E3 /* devchatClone */ = {
 			isa = PBXGroup;
 			children = (
+				0B92B4C91DB5216200454B50 /* Protocols */,
 				0B1854D01DB17C33000CE9E3 /* View */,
 				0B1854CF1DB17C2E000CE9E3 /* Controller */,
 				0B1854CC1DB179A5000CE9E3 /* AVCamPhotoCaptureDelegate.h */,
@@ -95,6 +97,14 @@
 				0B1854C71DB1794E000CE9E3 /* AVCamPreviewView.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		0B92B4C91DB5216200454B50 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0B92B4CC1DB5251800454B50 /* CameraVCDelegate.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +354,7 @@
 				0B1854BB1DB178AE000CE9E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

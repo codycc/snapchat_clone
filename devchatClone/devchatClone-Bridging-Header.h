@@ -5,3 +5,4 @@
 #import "AVCamCameraViewController.h"
 #import "AVCamPreviewView.h"
 #import <AVFoundation/AVFoundation.h>
+#import "CameraVCDelegate.h"
