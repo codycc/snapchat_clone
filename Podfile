@@ -6,7 +6,7 @@ target 'devchatClone' do
   use_frameworks!
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
-
+  pod 'Firebase/Auth'
   # Pods for devchatClone
 
 end

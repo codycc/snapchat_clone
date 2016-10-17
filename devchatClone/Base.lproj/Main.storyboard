@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--LoginVC-->
         <scene sceneID="Z2x-RC-QrX">
             <objects>
-                <viewController id="CRw-80-LrV" sceneMemberID="viewController">
+                <viewController id="CRw-80-LrV" customClass="LoginVC" customModule="devchatClone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6fU-iG-xRC"/>
                         <viewControllerLayoutGuide type="bottom" id="PBU-AC-z4b"/>
@@ -182,6 +182,7 @@
                         <outlet property="cameraBtn" destination="fjo-Od-zCh" id="bC6-u2-7WN"/>
                         <outlet property="previewView" destination="udi-ES-ymF" id="D4j-bb-w6W"/>
                         <outlet property="recordBtn" destination="QSu-Hc-xNu" id="BK6-YW-TV9"/>
+                        <segue destination="CRw-80-LrV" kind="presentation" identifier="toLoginScreen" id="uaq-Nm-IhL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

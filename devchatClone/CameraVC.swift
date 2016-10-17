@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import AVFoundation 
+import AVFoundation
+import FirebaseAuth
 
 class CameraVC: AVCamCameraViewController, CameraVCDelegate {
     @IBOutlet weak var previewView: AVCamPreviewView!
@@ -20,9 +21,14 @@ class CameraVC: AVCamCameraViewController, CameraVCDelegate {
         _previewView = previewView
         super.viewDidLoad()
         captureModeOn()
-        
-        
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //Firebase auth if current user not logged in then show login screen
+        guard FIRAuth.auth()?.currentUser != nil else {
+            performSegue(withIdentifier: "toLoginScreen", sender: nil)
+            return
+        }
     }
 
     @IBAction func recordBtnPressed(_ sender: AnyObject) {
