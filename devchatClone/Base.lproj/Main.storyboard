@@ -103,6 +103,9 @@
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginPressed:" destination="CRw-80-LrV" eventType="touchUpInside" id="etX-mM-hme"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,6 +128,10 @@
                             <constraint firstItem="0Jb-AV-rkU" firstAttribute="top" secondItem="pZm-01-gpu" secondAttribute="bottom" constant="20" id="ybo-Tz-sRs"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="v1I-Z4-Dfe" id="Hbx-Hb-rYe"/>
+                        <outlet property="passwordField" destination="pZm-01-gpu" id="bes-bs-SPT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3P-ni-sjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
