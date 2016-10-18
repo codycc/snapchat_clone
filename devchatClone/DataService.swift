@@ -9,6 +9,7 @@
 let FIR_CHILD_USERS = "users"
 import Foundation
 import FirebaseDatabase
+import FirebaseStorage
 
 class DataService {
     private static let _instance = DataService()
@@ -25,6 +26,18 @@ class DataService {
     
     var usersRef: FIRDatabaseReference {
         return mainRef.child(FIR_CHILD_USERS)
+    }
+    
+    var mainStorageRef: FIRStorageReference {
+        return FIRStorage.storage().reference(forURL: "gs://devchatclone.appspot.com")
+    }
+    
+    var imagesStorageRef: FIRStorageReference {
+        return mainStorageRef.child("images")
+    }
+    
+    var videoStorageRef: FIRStorageReference {
+        return mainStorageRef.child("videos")
     }
     
     func saveUser(uid: String) {

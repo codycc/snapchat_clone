@@ -25,11 +25,11 @@ class CameraVC: AVCamCameraViewController, CameraVCDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         //Firebase auth if current user not logged in then show login screen
-      performSegue(withIdentifier: "toLoginScreen", sender: nil)
-//        guard FIRAuth.auth()?.currentUser != nil else {
-//            performSegue(withIdentifier: "toLoginScreen", sender: nil)
-//            return
-//        }
+    
+        guard FIRAuth.auth()?.currentUser != nil else {
+            performSegue(withIdentifier: "toLoginScreen", sender: nil)
+            return
+        }
     }
 
     @IBAction func recordBtnPressed(_ sender: AnyObject) {
@@ -40,6 +40,8 @@ class CameraVC: AVCamCameraViewController, CameraVCDelegate {
     @IBAction func changeCameraBtnPressed(_ sender: AnyObject) {
        changeCamera()
     }
+    
+    
     
     func shouldEnableCameraUI(_ enable: Bool) {
         cameraBtn.isEnabled = enable
@@ -57,6 +59,43 @@ class CameraVC: AVCamCameraViewController, CameraVCDelegate {
     
     func canStartRecording() {
         print("Can start recording")
+    }
+    
+    func videoRecordingComplete(_ videoURL: URL!) {
+        // video is passed in through objective sample code then sent over to users vc
+        performSegue(withIdentifier: "goToUsersVC", sender: ["videoURL": videoURL!])
+    }
+    
+    func videoRecordingFailed() {
+        
+    }
+    
+    func snapshotFailed() {
+        
+    }
+    
+    func snapshotTaken(_ snapshotData: Data!) {
+        performSegue(withIdentifier: "goToUsersVC", sender: ["snapshotData": snapshotData])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // if the desitination is users vc
+        if let usersVC = segue.destination as? UsersVC {
+            print("here is sender:\(sender!)")
+            // grab the video url as sender and save as a dictionary of string and url
+            if let videoDict = sender! as? Dictionary<String, URL> {
+                
+                // let url equal the video Url
+                let url = videoDict["videoURL"]
+//                print("HERE IS THE URL\(url)")
+                // the constant in users vc called videoURL is now set to url
+                usersVC.videoURL = url
+            } else if let snapDict = sender as? Dictionary<String, Data> {
+                let snapData = snapDict["snapshotData"]
+                usersVC.snapData = snapData
+            }
+        }
     }
 
 

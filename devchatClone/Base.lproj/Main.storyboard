@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g6c-m9-6kC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -185,15 +185,29 @@
                                 <color key="barTintColor" red="0.27450980390000002" green="0.59215686270000001" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkU-fj-GJh">
+                                <items>
+                                    <navigationItem title="Send a Snap" id="OdN-t7-IzH">
+                                        <barButtonItem key="rightBarButtonItem" image="send_snap" id="VHQ-W1-k9B">
+                                            <connections>
+                                                <action selector="sendPRBtnPressedWithSender:" destination="g6c-m9-6kC" id="mhV-Y3-HyZ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="P99-Gz-8c5" firstAttribute="top" secondItem="Byv-0b-0BY" secondAttribute="bottom" id="3ko-ne-5Gu"/>
                             <constraint firstAttribute="trailing" secondItem="8aI-1i-VI4" secondAttribute="trailing" id="6u1-Uf-B0N"/>
                             <constraint firstItem="Byv-0b-0BY" firstAttribute="top" secondItem="8aI-1i-VI4" secondAttribute="bottom" id="Byh-OL-XmW"/>
+                            <constraint firstItem="8aI-1i-VI4" firstAttribute="top" secondItem="wkU-fj-GJh" secondAttribute="bottom" id="HaU-Pa-PB6"/>
                             <constraint firstItem="8aI-1i-VI4" firstAttribute="leading" secondItem="zz6-js-n9n" secondAttribute="leading" id="OkO-fQ-L0v"/>
-                            <constraint firstItem="8aI-1i-VI4" firstAttribute="top" secondItem="zz6-js-n9n" secondAttribute="top" id="VcP-F8-63V"/>
+                            <constraint firstAttribute="trailing" secondItem="wkU-fj-GJh" secondAttribute="trailing" id="VGJ-Xx-2CL"/>
+                            <constraint firstItem="wkU-fj-GJh" firstAttribute="leading" secondItem="zz6-js-n9n" secondAttribute="leading" id="Vg8-BV-8Jy"/>
                             <constraint firstAttribute="trailing" secondItem="Byv-0b-0BY" secondAttribute="trailing" id="sHN-XT-CNE"/>
+                            <constraint firstItem="wkU-fj-GJh" firstAttribute="top" secondItem="zz6-js-n9n" secondAttribute="top" constant="20" id="sJn-vy-DJ2"/>
                             <constraint firstItem="Byv-0b-0BY" firstAttribute="leading" secondItem="zz6-js-n9n" secondAttribute="leading" id="ylU-jU-uD4"/>
                         </constraints>
                     </view>
@@ -203,7 +217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXF-AY-8w7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1829.5999999999999" y="36.431784107946029"/>
+            <point key="canvasLocation" x="32.799999999999997" y="-695.80209895052474"/>
         </scene>
         <!--CameraVC-->
         <scene sceneID="tne-QT-ifu">
@@ -258,11 +272,12 @@
                         <outlet property="previewView" destination="udi-ES-ymF" id="D4j-bb-w6W"/>
                         <outlet property="recordBtn" destination="QSu-Hc-xNu" id="BK6-YW-TV9"/>
                         <segue destination="CRw-80-LrV" kind="presentation" identifier="toLoginScreen" id="uaq-Nm-IhL"/>
+                        <segue destination="g6c-m9-6kC" kind="show" identifier="goToUsersVC" id="TjK-pX-8W4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+            <point key="canvasLocation" x="-865" y="37"/>
         </scene>
     </scenes>
     <resources>
@@ -270,5 +285,6 @@
         <image name="createsnap_btn" width="30" height="30"/>
         <image name="devslopes" width="1080" height="1349"/>
         <image name="devslopes-mountains-white" width="451" height="335"/>
+        <image name="send_snap" width="24" height="23"/>
     </resources>
 </document>

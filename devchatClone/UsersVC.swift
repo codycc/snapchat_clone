@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 
 class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -15,12 +16,33 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private var users = [User]()
     private var selectedUsers = Dictionary<String, User>()
     
+    private var _snapData: Data?
+    private var _videoURL: URL?
+    
+    var snapData: Data? {
+        set {
+            _snapData = newValue
+        } get {
+            return _snapData
+        }
+    }
+    
+    var videoURL: URL? {
+        set {
+            _videoURL = newValue
+        } get {
+            return _videoURL
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsMultipleSelection = true
-        
+        //disable navigation button
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        print("video url in the users vc \(videoURL)")
         // go to all users and take a snapshot
         DataService.instance.usersRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let users = snapshot.value as? Dictionary<String, AnyObject> {
@@ -60,6 +82,7 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationItem.rightBarButtonItem?.isEnabled = true
         // when clicking cell, grab it from indexpath and set to cell constant
         let cell = tableView.cellForRow(at: indexPath) as! UserCell
         // call the setCheckmark function on the cell which will add a checkmark
@@ -78,6 +101,10 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let user = users[indexPath.row]
         selectedUsers[user.uid] = nil
         
+        // enable to send to multiple users 
+        if selectedUsers.count <= 0 {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,6 +113,41 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
+    }
+    
+    @IBAction func sendPRBtnPressed(sender: AnyObject) {
+        print("BUTTON IS PRESSED")
+        // for videos
+        if let url = _videoURL {
+            let videoName = "\(NSUUID().uuidString)\(url)"
+            let ref = DataService.instance.videoStorageRef.child(videoName)
+            
+            _ = ref.putFile(url, metadata: nil, completion: { (meta: FIRStorageMetadata?, err: Error?) in
+                if err != nil {
+                     print("Error uploading video: \(err?.localizedDescription)")
+                } else {
+                    
+                    // once video is successfully uploaded to firebase, itll send back a download url
+                   let downloadURL = meta!.downloadURL()
+                    print("Download Url: \(downloadURL)")
+                    
+                    // once snap is sent itll dismiss the users vc
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            // for photos
+        } else if let snap = _snapData {
+            let ref = DataService.instance.imagesStorageRef.child("\(NSUUID().uuidString).jpg")
+            
+            _ = ref.put(snap, metadata: nil, completion: { (meta:FIRStorageMetadata?, err: Error?) in
+                if err != nil {
+                    print("Error uploading snapshot: \(err?.localizedDescription)")
+                } else {
+                    let downloadURL = meta!.downloadURL()
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+        }
     }
 
   
