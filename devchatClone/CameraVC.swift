@@ -25,10 +25,11 @@ class CameraVC: AVCamCameraViewController, CameraVCDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         //Firebase auth if current user not logged in then show login screen
-        guard FIRAuth.auth()?.currentUser != nil else {
-            performSegue(withIdentifier: "toLoginScreen", sender: nil)
-            return
-        }
+      performSegue(withIdentifier: "toLoginScreen", sender: nil)
+//        guard FIRAuth.auth()?.currentUser != nil else {
+//            performSegue(withIdentifier: "toLoginScreen", sender: nil)
+//            return
+//        }
     }
 
     @IBAction func recordBtnPressed(_ sender: AnyObject) {

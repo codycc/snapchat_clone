@@ -15,6 +15,7 @@
 		0B1854CA1DB1794E000CE9E3 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1854C71DB1794E000CE9E3 /* AVCamPreviewView.m */; };
 		0B1854CB1DB1794E000CE9E3 /* AVCamCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1854C91DB1794E000CE9E3 /* AVCamCameraViewController.m */; };
 		0B1854CE1DB179A5000CE9E3 /* AVCamPhotoCaptureDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1854CD1DB179A5000CE9E3 /* AVCamPhotoCaptureDelegate.m */; };
+		0B2783A51DB6A40800873B63 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2783A41DB6A40800873B63 /* DataService.swift */; };
 		0B92B4D21DB56B2200454B50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B92B4D11DB56B2200454B50 /* GoogleService-Info.plist */; };
 		0B92B4D41DB5721200454B50 /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B92B4D31DB5721200454B50 /* RoundTextField.swift */; };
 		0B92B4D61DB578A200454B50 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B92B4D51DB578A200454B50 /* RoundedButton.swift */; };
@@ -38,6 +39,7 @@
 		0B1854C91DB1794E000CE9E3 /* AVCamCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamCameraViewController.m; sourceTree = "<group>"; };
 		0B1854CC1DB179A5000CE9E3 /* AVCamPhotoCaptureDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPhotoCaptureDelegate.h; sourceTree = "<group>"; };
 		0B1854CD1DB179A5000CE9E3 /* AVCamPhotoCaptureDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPhotoCaptureDelegate.m; sourceTree = "<group>"; };
+		0B2783A41DB6A40800873B63 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		0B92B4CC1DB5251800454B50 /* CameraVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraVCDelegate.h; sourceTree = "<group>"; };
 		0B92B4D11DB56B2200454B50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0B92B4D31DB5721200454B50 /* RoundTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				0B92B4DA1DB58EC500454B50 /* AuthService.swift */,
+				0B2783A41DB6A40800873B63 /* DataService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				0B92B4D61DB578A200454B50 /* RoundedButton.swift in Sources */,
 				0B92B4D41DB5721200454B50 /* RoundTextField.swift in Sources */,
 				0B1854CA1DB1794E000CE9E3 /* AVCamPreviewView.m in Sources */,
+				0B2783A51DB6A40800873B63 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

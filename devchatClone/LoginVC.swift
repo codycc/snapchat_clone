@@ -28,7 +28,16 @@ class LoginVC: UIViewController {
         if let email = emailField.text, let pass = passwordField.text , (email.characters.count > 0 && pass.characters.count > 0 ) {
             
             // let the email and password get passed to login function
-            AuthService.instance.login(email: email, password: pass)
+            AuthService.instance.login(email: email, password: pass, onComplete: { (errMsg, data) in
+                guard errMsg == nil else {
+                    let alert = UIAlertController(title: "Error Authentication", message: errMsg, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+                // if successful login, then dismiss login view controller 
+                self.dismiss(animated: true, completion: nil)
+            })
             
         } else {
             // setting the alert letting user know about entering more characters
