@@ -6,6 +6,7 @@
 //  Copyright © 2016 Cody Condon. All rights reserved.
 //
 
+let FIR_CHILD_USERS = "users"
 import Foundation
 import FirebaseDatabase
 
@@ -22,9 +23,13 @@ class DataService {
         return FIRDatabase.database().reference()
     }
     
+    var usersRef: FIRDatabaseReference {
+        return mainRef.child(FIR_CHILD_USERS)
+    }
+    
     func saveUser(uid: String) {
-        let profile: Dictionary<String, AnyObject> = ["firstname": "" as AnyObject, "lastname": "" as AnyObject]
+        let profile: Dictionary<String, AnyObject> = ["firstName": "" as AnyObject, "lastName": "" as AnyObject]
         //going to your app reference, then users child then create a uid for the user then setting that child called profile to the dictionary
-        mainRef.child("users").child(uid).child("profile").setValue(profile)
+        mainRef.child(FIR_CHILD_USERS).child(uid).child("profile").setValue(profile)
     }
 }
